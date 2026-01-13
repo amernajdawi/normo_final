@@ -8,6 +8,11 @@ import {
   CircularProgress,
   Alert,
   Container,
+  Select,
+  MenuItem,
+  FormControl,
+  Button,
+  Chip,
 } from '@mui/material';
 import { Send as SendIcon } from '@mui/icons-material';
 import { useConversation } from '../contexts/ConversationContext';
@@ -20,6 +25,8 @@ export interface ChatInterfaceRef {
 
 const ChatInterface = forwardRef<ChatInterfaceRef>((props, ref) => {
   const [input, setInput] = useState('');
+  const [userState, setUserState] = useState<string>('');
+  const [stateSelected, setStateSelected] = useState(false);
   const [currentMetadata, setCurrentMetadata] = useState<Record<string, string> | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
@@ -36,14 +43,17 @@ const ChatInterface = forwardRef<ChatInterfaceRef>((props, ref) => {
 
   const handleSendMessage = async () => {
     if (!input.trim() || isLoading) return;
+    
+    if (!stateSelected) {
+      return;
+    }
 
     const messageText = input.trim();
     setInput('');
 
     try {
-      await sendMessage(messageText);
+      await sendMessage(messageText, userState);
       
-      // Update current metadata for the sidebar if available
       const lastMessage = messages[messages.length - 1];
       if (lastMessage?.metadata && Object.keys(lastMessage.metadata).length > 0) {
         setCurrentMetadata(lastMessage.metadata);
@@ -63,18 +73,13 @@ const ChatInterface = forwardRef<ChatInterfaceRef>((props, ref) => {
   const handleNewChat = async () => {
     await createNewConversation();
     setCurrentMetadata(null);
+    setStateSelected(false);
+    setUserState('');
   };
 
   useImperativeHandle(ref, () => ({
     handleNewChat,
   }));
-
-  const exampleQuestions = [
-    "I am building apartment building with 5 flats in Linz. How many square meters of playground do I have to plan?",
-    "What are the building height requirements in Austrian law?",
-    "What waste management regulations apply in Upper Austria?",
-    "What are the room height requirements for residential buildings?",
-  ];
 
   return (
     <Box sx={{ 
@@ -98,9 +103,30 @@ const ChatInterface = forwardRef<ChatInterfaceRef>((props, ref) => {
         bgcolor: '#343541',
         zIndex: 1,
       }}>
-        <Typography variant="h6" sx={{ color: '#ffffff', textAlign: 'center' }}>
-          Normo Legal Assistant
-        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2 }}>
+          <img 
+            src="/logo.jpg" 
+            alt="Normo Logo" 
+            style={{ height: '32px', width: 'auto' }}
+          />
+          <Typography variant="h6" sx={{ color: '#ffffff' }}>
+            Normo Legal Assistant
+          </Typography>
+        </Box>
+        {stateSelected && userState && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1, mt: 1 }}>
+            <Chip
+              label={userState}
+              size="small"
+              sx={{
+                bgcolor: '#10a37f',
+                color: '#ffffff',
+                fontWeight: 600,
+                fontSize: '0.75rem',
+              }}
+            />
+          </Box>
+        )}
         <Typography variant="body2" sx={{ color: '#b4b4b4', textAlign: 'center', mt: 0.5 }}>
           {currentConversationId 
             ? 'Continuing conversation - ask follow-up questions' 
@@ -122,42 +148,102 @@ const ChatInterface = forwardRef<ChatInterfaceRef>((props, ref) => {
         flexDirection: 'column',
       }}>
         {messages.length === 0 ? (
-          <Container maxWidth="md" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', py: 4 }}>
-            <Typography variant="h4" sx={{ color: '#ffffff', textAlign: 'center', mb: 3, fontWeight: 600 }}>
-              Welcome to Normo Legal Assistant
-            </Typography>
-            <Typography variant="body1" sx={{ color: '#b4b4b4', textAlign: 'center', mb: 4, lineHeight: 1.6 }}>
-              Your AI-powered assistant for Austrian building regulations. Ask questions about playground requirements, 
-              building heights, construction standards, and more. Get exact calculations with legal citations.
-            </Typography>
-            
-            <Typography variant="h6" sx={{ color: '#10a37f', mb: 2, textAlign: 'center' }}>
-              Try these examples:
-            </Typography>
-            
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4 }}>
-              {exampleQuestions.map((question, index) => (
-                <Paper
-                  key={index}
-                  sx={{
-                    p: 2,
-                    bgcolor: '#444654',
-                    border: '1px solid #565869',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s',
-                    '&:hover': {
-                      bgcolor: '#4d4d5f',
-                      borderColor: '#10a37f',
-                    },
-                  }}
-                  onClick={() => setInput(question)}
-                >
-                  <Typography variant="body2" sx={{ color: '#ffffff' }}>
-                    "{question}"
-                  </Typography>
-                </Paper>
-              ))}
+          <Container maxWidth="sm" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', py: 4 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 6 }}>
+              <img 
+                src="/logo.jpg" 
+                alt="Normo Logo" 
+                style={{ height: '80px', width: 'auto', marginBottom: '24px' }}
+              />
+              <Typography variant="h3" sx={{ color: '#ffffff', textAlign: 'center', fontWeight: 700, letterSpacing: '-0.5px' }}>
+                Normo Legal Assistant
+              </Typography>
             </Box>
+
+            {!stateSelected && (
+              <Paper 
+                elevation={3}
+                sx={{ 
+                  p: 5, 
+                  mb: 4, 
+                  bgcolor: '#2d2d30', 
+                  border: '2px solid #10a37f',
+                  borderRadius: 3,
+                  boxShadow: '0 8px 32px rgba(16, 163, 127, 0.15)'
+                }}
+              >
+                <Box sx={{ textAlign: 'center', mb: 4 }}>
+                  <Typography variant="h5" sx={{ color: '#ffffff', mb: 2, fontWeight: 600 }}>
+                    Select Your State
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: '#b4b4b4', lineHeight: 1.6 }}>
+                    Austrian building regulations vary by state
+                  </Typography>
+                </Box>
+
+                <FormControl fullWidth sx={{ mb: 3 }}>
+                  <Select
+                    value={userState}
+                    onChange={(e) => setUserState(e.target.value)}
+                    displayEmpty
+                    sx={{ 
+                      bgcolor: '#1e1e1e',
+                      color: '#ffffff',
+                      borderRadius: 2,
+                      height: 56,
+                      '.MuiOutlinedInput-notchedOutline': { borderColor: '#3d3d3d' },
+                      '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#10a37f' },
+                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#10a37f', borderWidth: 2 },
+                      '.MuiSelect-select': { 
+                        py: 2,
+                        display: 'flex',
+                        alignItems: 'center'
+                      }
+                    }}
+                  >
+                    <MenuItem value="" disabled sx={{ display: 'none' }}>
+                      Choose your state...
+                    </MenuItem>
+                    <MenuItem value="Vienna">
+                      Vienna (Wien)
+                    </MenuItem>
+                    <MenuItem value="Upper Austria">
+                      Upper Austria (Oberösterreich)
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+
+                <Button
+                  fullWidth
+                  variant="contained"
+                  disabled={!userState}
+                  onClick={() => setStateSelected(true)}
+                  sx={{
+                    bgcolor: '#10a37f',
+                    color: '#ffffff',
+                    py: 1.5,
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    boxShadow: '0 4px 14px rgba(16, 163, 127, 0.4)',
+                    '&:hover': { 
+                      bgcolor: '#0d8f6f',
+                      boxShadow: '0 6px 20px rgba(16, 163, 127, 0.6)',
+                      transform: 'translateY(-1px)'
+                    },
+                    '&:disabled': { 
+                      bgcolor: '#2d2d30', 
+                      color: '#666',
+                      boxShadow: 'none'
+                    },
+                    transition: 'all 0.2s'
+                  }}
+                >
+                  Continue →
+                </Button>
+              </Paper>
+            )}
           </Container>
         ) : (
           <MessageList messages={messages} />

@@ -1,3 +1,11 @@
+export interface ImageInfo {
+  filename: string;
+  description?: string;
+  type?: 'image' | 'table';
+  pdf_name?: string;
+  page?: number;
+}
+
 export interface SourceCitation {
   pdf_name: string;
   page: number;
@@ -7,6 +15,7 @@ export interface SourceCitation {
   relevant_content: string;
   calculations?: string[];
   area_measurements?: string[];
+  images?: ImageInfo[];
 }
 
 export interface ChatMessage {
@@ -15,7 +24,8 @@ export interface ChatMessage {
   role: 'user' | 'assistant';
   timestamp: Date;
   citations?: SourceCitation[];
-  metadata?: Record<string, string>;
+  metadata?: Record<string, any>;
+  images?: ImageInfo[];
 }
 
 // New conversation-related types
@@ -26,7 +36,7 @@ export interface ConversationMessage {
   agent_steps?: string[];
   pdf_names?: string[];
   source_citations?: SourceCitation[];
-  meta_data?: Record<string, string>;
+  meta_data?: Record<string, any>;
 }
 
 export interface Conversation {
@@ -56,6 +66,7 @@ export interface ChatRequest {
   user_id?: string;
   conversation_id?: string;
   stream?: boolean;
+  user_state?: string;
 }
 
 export interface ChatResponse {
@@ -63,6 +74,7 @@ export interface ChatResponse {
     role: 'assistant';
     content: string;
     timestamp: string;
+    meta_data?: Record<string, any>;
   };
   conversation_id?: string;
   source_citations?: SourceCitation[];

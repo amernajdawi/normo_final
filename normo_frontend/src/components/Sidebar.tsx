@@ -14,10 +14,6 @@ import {
 } from '@mui/material';
 import {
   Add as AddIcon,
-  Architecture as ArchitectureIcon,
-  Gavel as GavelIcon,
-  Calculate as CalculateIcon,
-  Description as DescriptionIcon,
   Chat as ChatIcon,
 } from '@mui/icons-material';
 import { useConversation } from '../contexts/ConversationContext';
@@ -32,29 +28,6 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ onNewChat }) => {
   const { state, switchToConversation } = useConversation();
   const { conversations, currentConversationId } = state;
-
-  const features = [
-    {
-      icon: <ArchitectureIcon />,
-      title: 'Austrian Building Codes',
-      description: 'Access comprehensive building regulations',
-    },
-    {
-      icon: <CalculateIcon />,
-      title: 'Area Calculations',
-      description: 'Get exact formulas and requirements',
-    },
-    {
-      icon: <GavelIcon />,
-      title: 'Legal Citations',
-      description: 'Detailed source references with page numbers',
-    },
-    {
-      icon: <DescriptionIcon />,
-      title: 'Real PDF Documents',
-      description: 'Query actual Austrian legal documents',
-    },
-  ];
 
   const formatConversationTitle = (conversation: ConversationListItem) => {
     if (!conversation) {
@@ -246,76 +219,6 @@ const Sidebar: React.FC<SidebarProps> = ({ onNewChat }) => {
             <Divider sx={{ bgcolor: '#4d4d4f', mb: 2 }} />
           </>
         )}
-
-        {/* Features */}
-        <Typography
-          variant="subtitle2"
-          sx={{
-            mb: 2,
-            color: '#10a37f',
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            fontSize: '0.75rem',
-            letterSpacing: '0.5px',
-          }}
-        >
-          Features
-        </Typography>
-
-        <List sx={{ p: 0 }}>
-          {features.map((feature, index) => (
-            <ListItem
-              key={index}
-              sx={{
-                p: 1,
-                mb: 1,
-                borderRadius: 1,
-                '&:hover': {
-                  bgcolor: 'rgba(16, 163, 127, 0.1)',
-                },
-              }}
-            >
-              <ListItemIcon sx={{ color: '#10a37f', minWidth: 36 }}>
-                {feature.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="body2" sx={{ color: '#ffffff', fontWeight: 500 }}>
-                    {feature.title}
-                  </Typography>
-                }
-                secondary={
-                  <Typography variant="caption" sx={{ color: '#b4b4b4' }}>
-                    {feature.description}
-                  </Typography>
-                }
-              />
-            </ListItem>
-          ))}
-        </List>
-
-        {/* Bottom Info */}
-        <Box sx={{ mt: 'auto', pt: 2 }}>
-          <Paper
-            sx={{
-              p: 2,
-              bgcolor: '#2d2d30',
-              border: '1px solid #4d4d4f',
-            }}
-          >
-            <Typography
-              variant="caption"
-              sx={{
-                color: '#b4b4b4',
-                display: 'block',
-                textAlign: 'center',
-                lineHeight: 1.4,
-              }}
-            >
-              Ask questions about Austrian building codes, playground requirements, construction regulations, and more.
-            </Typography>
-          </Paper>
-        </Box>
       </Box>
     </Drawer>
   );

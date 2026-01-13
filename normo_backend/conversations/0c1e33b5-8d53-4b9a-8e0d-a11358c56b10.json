@@ -1,0 +1,370 @@
+{
+  "conversation_id": "0c1e33b5-8d53-4b9a-8e0d-a11358c56b10",
+  "user_id": null,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Ein Geb\u00e4ude wird so geplant, dass sich gleichzeitig 120 Personen darin aufhalten k\u00f6nnen. Es ist davon auszugehen, dass sich gleich viele M\u00e4nner wie Frauen im Geb\u00e4ude befinden und die Toiletten kontinuierlich benutzt werden. Wie viele weibliche Sitztoiletten, m\u00e4nnliche Sitztoiletten und Urinalst\u00e4nde?",
+      "timestamp": "2026-01-13 13:13:00.214926",
+      "agent_steps": null,
+      "pdf_names": null,
+      "source_citations": null,
+      "meta_data": null
+    },
+    {
+      "role": "assistant",
+      "content": "Based on the requirements outlined in the OIB guidelines and the \u00d6NORM standards applicable in Austria, for a building designed to accommodate 120 persons with an equal distribution of men and women, the following sanitary facilities are required:\n\n### Total Toilet Requirements\n1. **Total Toilets Required**: For every 50 persons, at least one toilet must be provided. Therefore, for 120 persons, the calculation is as follows:\n   - \\( \\text{Total Toilets} = \\frac{120}{50} = 2.4 \\) \u2192 Round up to 3 toilets.\n\n### Distribution of Toilets\n- **Female Toilets**: 2\n- **Male Toilets**: 2\n- **Urinals**: 1 (for male toilets)\n\n### Legal Standards and Accessibility\n- **Minimum Size for Toilets**: Toilets must be at least 2.15 m \u00d7 1.65 m, with a movement space of at least 1.50 m in diameter around them.\n- **Accessibility Features**: Toilets must be designed to be accessible, including features such as outward-opening doors, sufficient space for wheelchair access, and handrails.\n- **Additional Facilities**: Each toilet should have a washbasin that does not intrude more than 20 cm into the movement area, and in publicly accessible buildings, an emergency call system must be installed.\n\n### References\n- OIB-Richtlinie 3 (Hygiene, Gesundheit und Umweltschutz)\n- OIB-Richtlinie 4 (Nutzungssicherheit und Barrierefreiheit)\n- \u00d6NORM B 1600 (Barrierefreies Bauen)\n\nThis summary ensures that the building meets the necessary sanitary standards while accommodating the expected number of occupants effectively.",
+      "timestamp": "2026-01-13 13:13:34.652210",
+      "agent_steps": [
+        "retrieve_pdfs"
+      ],
+      "pdf_names": [
+        "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 3 Hygiene, Gesundheit und Umweltschutz Ausgabe Mai 2023_OIB-330.3-011_23.pdf",
+        "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf",
+        "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf"
+      ],
+      "source_citations": [
+        {
+          "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "page": 25,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf_p25_c60",
+          "file_path": "arch_pdfs\\01_Data base documents\\04_\u00d6NORM\\4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "relevant_content": "ANMERKUNG Rollstuhlpl\u00e4tze in Kinos sollten vorzugsweise im mittleren oder hinteren Zuschauerbereich, bei allen \u00fcbrigen Veranstaltungsst\u00e4tten im vorderen Drittel, situiert werden.\nMa\u00dfe in cm\nBild 12 - ..."
+        },
+        {
+          "pdf_name": "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 3 Hygiene, Gesundheit und Umweltschutz Ausgabe Mai 2023_OIB-330.3-011_23.pdf",
+          "page": 4,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 3 Hygiene, Gesundheit und Umweltschutz Ausgabe Mai 2023_OIB-330.3-011_23.pdf_p4_c5",
+          "file_path": "arch_pdfs\\01_Data base documents\\03_OIB Richtlinien\\2023\\3_AT_0_0_OIB_OIB-Richtlinie 3 Hygiene, Gesundheit und Umweltschutz Ausgabe Mai 2023_OIB-330.3-011_23.pdf",
+          "relevant_content": "Der  Anwendungsbereich  der  OIB-Richtlinien  auf  Versammlungsst\u00e4tten  ergibt  sich  aus  den  im Dokument 'OIB-Richtlinien - Begriffsbestimmungen' definierten Begriffen 'Menschenansammlung, gr\u00f6\u00dfere'..."
+        },
+        {
+          "pdf_name": "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf",
+          "page": 15,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf_p15_c20",
+          "file_path": "arch_pdfs\\01_Data base documents\\03_OIB Richtlinien\\2023\\3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf",
+          "relevant_content": "- 7.4.2 Anpassbare Wohnungen m\u00fcssen so errichtet werden, dass die Anforderungen an die Barrierefreiheit  (z.B.  Raumeinteilung  und  Ausstattung  der  Sanit\u00e4rr\u00e4ume,  Breite  der  G\u00e4nge,  Anfahrbereich..."
+        },
+        {
+          "pdf_name": "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf",
+          "page": 14,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf_p14_c18",
+          "file_path": "arch_pdfs\\01_Data base documents\\03_OIB Richtlinien\\2023\\3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf",
+          "relevant_content": "- 6.1 Geb\u00e4ude  sind  mit  Blitzschutzsystemen  auszustatten,  wenn  sie  wegen  ihrer  Lage,  Gr\u00f6\u00dfe  oder Bauweise durch Blitzschlag gef\u00e4hrdet sind, oder wenn der Verwendungszweck oder die kulturhisto...",
+          "area_measurements": [
+            "400 m\u00b2",
+            "600 m\u00b2",
+            "2.000 m\u00b2",
+            "1.200  m\u00b2"
+          ]
+        },
+        {
+          "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "page": 2,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf_p2_c32",
+          "file_path": "arch_pdfs\\01_Data base documents\\04_\u00d6NORM\\4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "relevant_content": "...........................................................................................................................................................................4.Anwendungsbereich.............",
+          "images": [
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p2_table0.png",
+              "description": "",
+              "type": "table"
+            }
+          ]
+        },
+        {
+          "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "page": 27,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf_p27_c62",
+          "file_path": "arch_pdfs\\01_Data base documents\\04_\u00d6NORM\\4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "relevant_content": "Bild 13 - Beispiele Sanit\u00e4rbereich f\u00fcr den anpassbaren Wohnbau\nNeben der Anpassbarkeit von Sanit\u00e4rr\u00e4umen (siehe Bild 13) durch Entfernen von Trennw\u00e4nden ist auch die vorsorgliche Installation eines zw...",
+          "images": [
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p27_img41.png",
+              "description": "Bild 13 - Beispiele Sanit\u00e4rbereich f\u00fcr den anpassbaren Wohnbau",
+              "type": "image"
+            }
+          ]
+        },
+        {
+          "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "page": 43,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf_p43_c76",
+          "file_path": "arch_pdfs\\01_Data base documents\\04_\u00d6NORM\\4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "relevant_content": "Um  einen  erh\u00f6hten  Standard  zu  erreichen,  ist  die  Raumgr\u00f6\u00dfe  f\u00fcr  ein  einseitig  anfahrbares  WC  in Hinblick auf die Ausstattung mit mindestens 185 cm \u00d7 215 cm auszuf\u00fchren.\nZus\u00e4tzlich  zur  M...",
+          "images": [
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p42_img56.png",
+              "description": "Bild A.1 - Einseitig anfahrbares WC - erh\u00f6hter Standard",
+              "type": "image"
+            }
+          ]
+        },
+        {
+          "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "page": 22,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf_p22_c58",
+          "file_path": "arch_pdfs\\01_Data base documents\\04_\u00d6NORM\\4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "relevant_content": "Grunds\u00e4tzlich sind Rampen im Verlauf von Fluchtwegen gem\u00e4\u00df 3.3.3 auszuf\u00fchren. Sollten im Rahmen der  Fluchtwegeplanung  abw\u00e4rts  f\u00fchrende  Rampen  als  Rettungswege  (Benutzung  in  der  Regel  mit fr...",
+          "images": [
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img34.png",
+              "description": "",
+              "type": "image"
+            },
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img35.png",
+              "description": "",
+              "type": "image"
+            },
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img36.png",
+              "description": "",
+              "type": "image"
+            },
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img37.png",
+              "description": "",
+              "type": "image"
+            },
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img38.png",
+              "description": "Ma\u00dfe in cm",
+              "type": "image"
+            },
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img39.png",
+              "description": "b) Einseitig anfahrbar",
+              "type": "image"
+            }
+          ]
+        },
+        {
+          "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "page": 34,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf_p34_c70",
+          "file_path": "arch_pdfs\\01_Data base documents\\04_\u00d6NORM\\4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "relevant_content": "Die Beschriftung von 2 % der Garderobenschr\u00e4nke und Schlie\u00dff\u00e4cher, jedoch mindestens 2 St\u00fcck sind taktil auszuf\u00fchren.\nIn  unmittelbarer N\u00e4he der Umkleidekabinen muss zumindest ein Spiegel in der H\u00f6he ...",
+          "images": [
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img42.png",
+              "description": "",
+              "type": "image"
+            },
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img43.png",
+              "description": "",
+              "type": "image"
+            },
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img44.png",
+              "description": "c) Unterfahrbarkeit mit den Fu\u00dfst\u00fctzen - Bedienh\u00f6he",
+              "type": "image"
+            }
+          ]
+        },
+        {
+          "pdf_name": "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf",
+          "page": 5,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf_p5_c4",
+          "file_path": "arch_pdfs\\01_Data base documents\\03_OIB Richtlinien\\2023\\3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf",
+          "relevant_content": "Den Anforderungen f\u00fcr Versammlungsst\u00e4tten ist eine maximale Personendichte von vier Personen pro m\u00b2 der f\u00fcr Besucher zur Verf\u00fcgung stehenden Fl\u00e4che des Versammlungsraumes zu Grunde gelegt.\nVon den Anf..."
+        },
+        {
+          "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "page": 3,
+          "paragraph": "N/A",
+          "chunk_id": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf_p3_c40",
+          "file_path": "arch_pdfs\\01_Data base documents\\04_\u00d6NORM\\4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+          "relevant_content": "Dusche...................................................................................................................................................................................36. 8.4.7, 1 =\n...",
+          "images": [
+            {
+              "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p3_table1.png",
+              "description": "",
+              "type": "table"
+            }
+          ]
+        }
+      ],
+      "meta_data": {
+        "country": "Austria",
+        "state": "Upper Austria",
+        "legal_domain": "building_law",
+        "document_type": "Bauordnung",
+        "subject_area": "building_construction",
+        "retrieved_images": "[{\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p2_table0.png\", \"description\": \"\", \"type\": \"table\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p27_img41.png\", \"description\": \"Bild 13 - Beispiele Sanit\\u00e4rbereich f\\u00fcr den anpassbaren Wohnbau\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p42_img56.png\", \"description\": \"Bild A.1 - Einseitig anfahrbares WC - erh\\u00f6hter Standard\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img34.png\", \"description\": \"\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img35.png\", \"description\": \"\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img36.png\", \"description\": \"\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img37.png\", \"description\": \"\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img38.png\", \"description\": \"Ma\\u00dfe in cm\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img39.png\", \"description\": \"b) Einseitig anfahrbar\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img42.png\", \"description\": \"\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img43.png\", \"description\": \"\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img44.png\", \"description\": \"c) Unterfahrbarkeit mit den Fu\\u00dfst\\u00fctzen - Bedienh\\u00f6he\", \"type\": \"image\"}, {\"filename\": \"4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p3_table1.png\", \"description\": \"\", \"type\": \"table\"}]",
+        "images": [
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p2_table0.png",
+            "description": "",
+            "type": "table",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 2
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p27_img41.png",
+            "description": "Bild 13 - Beispiele Sanit\u00e4rbereich f\u00fcr den anpassbaren Wohnbau",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 27
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p42_img56.png",
+            "description": "Bild A.1 - Einseitig anfahrbares WC - erh\u00f6hter Standard",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 43
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img34.png",
+            "description": "",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 22
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img35.png",
+            "description": "",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 22
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img36.png",
+            "description": "",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 22
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img37.png",
+            "description": "",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 22
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img38.png",
+            "description": "Ma\u00dfe in cm",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 22
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img39.png",
+            "description": "b) Einseitig anfahrbar",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 22
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img42.png",
+            "description": "",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 34
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img43.png",
+            "description": "",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 34
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img44.png",
+            "description": "c) Unterfahrbarkeit mit den Fu\u00dfst\u00fctzen - Bedienh\u00f6he",
+            "type": "image",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 34
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p3_table1.png",
+            "description": "",
+            "type": "table",
+            "pdf_name": "01_Data base documents/04_\u00d6NORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf",
+            "page": 3
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p2_table0.png",
+            "description": "",
+            "type": "table"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p27_img41.png",
+            "description": "Bild 13 - Beispiele Sanit\u00e4rbereich f\u00fcr den anpassbaren Wohnbau",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p42_img56.png",
+            "description": "Bild A.1 - Einseitig anfahrbares WC - erh\u00f6hter Standard",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img34.png",
+            "description": "",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img35.png",
+            "description": "",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img36.png",
+            "description": "",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img37.png",
+            "description": "",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img38.png",
+            "description": "Ma\u00dfe in cm",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p23_img39.png",
+            "description": "b) Einseitig anfahrbar",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img42.png",
+            "description": "",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img43.png",
+            "description": "",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p34_img44.png",
+            "description": "c) Unterfahrbarkeit mit den Fu\u00dfst\u00fctzen - Bedienh\u00f6he",
+            "type": "image"
+          },
+          {
+            "filename": "4_AT_0_0_OEN_B_1600_Barrierefreies_Bauen_p3_table1.png",
+            "description": "",
+            "type": "table"
+          }
+        ]
+      }
+    }
+  ],
+  "created_at": "2026-01-13 13:13:00.213347",
+  "updated_at": "2026-01-13 13:13:34.652210",
+  "context": {}
+}

@@ -16,18 +16,29 @@ from langchain_openai import OpenAIEmbeddings
 from normo_backend.config import get_settings
 from normo_backend.utils.pdf_processor import (get_available_pdfs,
                                                load_pdfs_from_folder)
+from normo_backend.utils.docling_processor import load_pdfs_with_docling
 
 
 class PersistentVectorStore:
     """Manages persistent ChromaDB vector store with incremental PDF loading."""
     
-    def __init__(self, persist_directory: str = "vector_store", pdf_folder: str = "arch_pdfs"):
+    def __init__(
+        self, 
+        persist_directory: str = "vector_store", 
+        pdf_folder: str = "arch_pdfs",
+        use_docling: bool = True,  # Use new docling processing by default
+        image_output_dir: str = "rag_assets"
+    ):
         self.persist_directory = persist_directory
         self.pdf_folder = pdf_folder
+        self.use_docling = use_docling
+        self.image_output_dir = image_output_dir
         self.metadata_file = Path(persist_directory) / "pdf_metadata.json"
         
         # Ensure directories exist
         Path(persist_directory).mkdir(exist_ok=True)
+        if use_docling:
+            Path(image_output_dir).mkdir(exist_ok=True)
         
         # Initialize embeddings
         settings = get_settings()
@@ -42,6 +53,12 @@ class PersistentVectorStore:
         
         # Load or create metadata tracking
         self.pdf_metadata = self._load_metadata()
+        
+        print(f"📚 Vector Store initialized:")
+        print(f"   - Database: {persist_directory}")
+        print(f"   - Processing: {'Docling (with images)' if use_docling else 'PyPDF (legacy)'}")
+        if use_docling:
+            print(f"   - Images: {image_output_dir}")
     
     def _load_metadata(self) -> Dict[str, Dict]:
         """Load PDF metadata tracking file."""
@@ -139,8 +156,17 @@ class PersistentVectorStore:
         
         print(f"📊 Processing {len(pdf_names)} PDFs for embedding...")
         
-        # Load documents from PDFs
-        documents = load_pdfs_from_folder(self.pdf_folder, pdf_names)
+        # Load documents from PDFs using selected processor
+        if self.use_docling:
+            print(f"🔬 Using Docling processor with image extraction...")
+            documents = load_pdfs_with_docling(
+                self.pdf_folder, 
+                pdf_names, 
+                self.image_output_dir
+            )
+        else:
+            print(f"📄 Using legacy PyPDF processor...")
+            documents = load_pdfs_from_folder(self.pdf_folder, pdf_names)
         
         if not documents:
             print("❌ No documents loaded")
@@ -165,11 +191,9 @@ class PersistentVectorStore:
     def get_retriever(self, search_kwargs: Optional[Dict] = None):
         """Get retriever for the vector store."""
         default_kwargs = {
-            "search_type": "mmr",
+            "search_type": "similarity",  # Matching normo_docling test settings
             "search_kwargs": {
-                "k": 12,
-                "lambda_mult": 0.7,
-                "fetch_k": 20
+                "k": 1,  # Matching normo_docling test settings (k=1 for focused results)
             }
         }
         
@@ -252,9 +276,24 @@ class PersistentVectorStore:
 # Global instance
 _vector_store = None
 
-def get_vector_store() -> PersistentVectorStore:
-    """Get the global vector store instance."""
+def get_vector_store(use_existing_db: bool = True) -> PersistentVectorStore:
+    """
+    Get the global vector store instance.
+    
+    Args:
+        use_existing_db: If True, use the pre-processed chroma_db_openai_v2 database (DEFAULT).
+                        If False, use the old vector_store directory.
+    
+    Returns:
+        PersistentVectorStore instance
+    """
     global _vector_store
     if _vector_store is None:
-        _vector_store = PersistentVectorStore()
+        # Use the pre-processed database with images
+        _vector_store = PersistentVectorStore(
+            persist_directory="chroma_db_openai_v2",
+            pdf_folder="arch_pdfs",
+            use_docling=True,
+            image_output_dir="rag_assets"
+        )
     return _vector_store

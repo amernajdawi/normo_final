@@ -15,6 +15,7 @@ export const chatApi = {
   sendMessage: async (
     message: string, 
     conversationId?: string, 
+    userState?: string,
     userId?: string
   ): Promise<ChatResponse> => {
     const request: ChatRequest = {
@@ -25,7 +26,8 @@ export const chatApi = {
       }],
       conversation_id: conversationId,
       user_id: userId,
-      stream: false
+      stream: false,
+      user_state: userState
     };
 
     const response = await api.post<ChatResponse>('/chat', request);

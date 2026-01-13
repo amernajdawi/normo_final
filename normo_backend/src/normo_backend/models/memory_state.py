@@ -12,9 +12,13 @@ class AgentState(BaseModel):
     pdf_names: List[str] = []
     summary: str = ""
     memory: List[Dict[str, Any]] = []
-    source_citations: List[Dict[str, Any]] = []  # Add source citations tracking
+    source_citations: List[Dict[str, Any]] = []
     
-    # Conversation context
     conversation_id: Optional[str] = None
-    conversation_history: List[Dict[str, Any]] = []  # Previous conversation messages
-    is_follow_up: bool = False  # Whether this is a follow-up question
+    conversation_history: List[Dict[str, Any]] = []
+    is_follow_up: bool = False
+    
+    user_state: Optional[str] = None
+    folder_1: Optional[str] = None
+    folder_2: Optional[str] = None
+    filter_logic: str = "and"

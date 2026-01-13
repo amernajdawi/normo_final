@@ -6,7 +6,7 @@ from normo_backend.utils.trimer import extract_json
 
 def meta_data_agent(state: AgentState) -> AgentState:
     prompt = META_DATA_EXTRACTOR_SYSTEM_PROMPT.format(user_query=state.user_query)
-    response = get_default_chat_model(model="gpt-4o-mini", temperature=0.2).invoke(
+    response = get_default_chat_model(model="gpt-4.1-2025-04-14", temperature=0.2).invoke(
         prompt
     )
     try:

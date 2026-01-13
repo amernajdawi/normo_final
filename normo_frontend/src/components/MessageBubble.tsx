@@ -16,10 +16,10 @@ import {
   Description as DocumentIcon,
   Calculate as CalculateIcon,
 } from '@mui/icons-material';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import { ChatMessage } from '../types/api';
+import { ChatMessage, ImageInfo } from '../types/api';
 import CitationsList from './CitationsList';
+import ImageGallery from './ImageGallery';
+import EnhancedAssistantMessage from './EnhancedAssistantMessage';
 
 interface MessageBubbleProps {
   message: ChatMessage;
@@ -29,6 +29,37 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   const [showCitations, setShowCitations] = useState(false);
   const isUser = message.role === 'user';
   const hasCitations = message.citations && message.citations.length > 0;
+  
+  // Extract images from metadata and citations
+  const images: ImageInfo[] = [];
+  
+  // Get images from metadata
+  if (message.metadata?.images) {
+    images.push(...message.metadata.images);
+  }
+  
+  // Get images from citations
+  if (message.citations) {
+    message.citations.forEach(citation => {
+      if (citation.images) {
+        citation.images.forEach(img => {
+          // Add citation context to image
+          images.push({
+            ...img,
+            pdf_name: img.pdf_name || citation.pdf_name,
+            page: img.page || citation.page
+          });
+        });
+      }
+    });
+  }
+  
+  // Remove duplicates based on filename
+  const uniqueImages = images.filter((img, index, self) => 
+    index === self.findIndex(i => i.filename === img.filename)
+  );
+  
+  const hasImages = uniqueImages.length > 0;
 
   return (
     <Box
@@ -78,72 +109,32 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         </Typography>
       </Box>
 
-      {/* Message Content */}
+      {/* Images Section - Always visible */}
+      {hasImages && !isUser && (
+        <Box sx={{ mt: 2, mb: 2, width: '100%', maxWidth: '85%' }}>
+          <ImageGallery images={uniqueImages} />
+        </Box>
+      )}
+
+      {/* Enhanced Message Content */}
       <Paper
         sx={{
-          p: 2,
-          maxWidth: '80%',
-          bgcolor: isUser ? '#10a37f' : '#444654',
+          p: 0,
+          maxWidth: '85%',
+          bgcolor: isUser ? '#10a37f' : '#1e1e1e',
           color: '#ffffff',
           borderRadius: 2,
-          '& pre': {
-            bgcolor: '#2d2d30',
-            p: 1,
-            borderRadius: 1,
-            overflow: 'auto',
-          },
-          '& code': {
-            bgcolor: '#2d2d30',
-            px: 0.5,
-            py: 0.25,
-            borderRadius: 0.5,
-            fontSize: '0.875rem',
-          },
-          '& blockquote': {
-            borderLeft: '3px solid #10a37f',
-            pl: 2,
-            ml: 0,
-            fontStyle: 'italic',
-          },
+          border: isUser ? 'none' : '1px solid #3d3d3d',
+          overflow: 'hidden',
         }}
       >
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          components={{
-            p: ({ children }) => (
-              <Typography variant="body1" sx={{ mb: 1, '&:last-child': { mb: 0 } }}>
-                {children}
-              </Typography>
-            ),
-            h1: ({ children }) => (
-              <Typography variant="h5" sx={{ mb: 1, fontWeight: 600 }}>
-                {children}
-              </Typography>
-            ),
-            h2: ({ children }) => (
-              <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
-                {children}
-              </Typography>
-            ),
-            h3: ({ children }) => (
-              <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
-                {children}
-              </Typography>
-            ),
-            li: ({ children }) => (
-              <Typography component="li" variant="body1" sx={{ mb: 0.5 }}>
-                {children}
-              </Typography>
-            ),
-            strong: ({ children }) => (
-              <Typography component="span" sx={{ fontWeight: 700, color: '#10a37f' }}>
-                {children}
-              </Typography>
-            ),
-          }}
-        >
-          {message.content}
-        </ReactMarkdown>
+        {isUser ? (
+          <Box sx={{ p: 2 }}>
+            <Typography variant="body1">{message.content}</Typography>
+          </Box>
+        ) : (
+          <EnhancedAssistantMessage content={message.content} />
+        )}
       </Paper>
 
       {/* Citations Section */}

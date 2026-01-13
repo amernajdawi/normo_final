@@ -1,14 +1,14 @@
-# Use Node.js 18 Alpine image for smaller size
+# Use Node.js 18 Alpine image
 FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy package.json only (not package-lock.json to avoid lock file issues)
+COPY package.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install dependencies with fresh lock file
+RUN npm install
 
 # Copy source code
 COPY public/ ./public/

@@ -40,8 +40,9 @@ class Conversation(BaseModel):
 class ChatRequest(BaseModel):
     messages: list[ChatMessage] = Field(default_factory=list)
     user_id: Optional[str] = None
-    conversation_id: Optional[str] = None  # For follow-up questions
+    conversation_id: Optional[str] = None
     stream: bool = False
+    user_state: Optional[str] = None
 
 
 class ChatResponse(BaseModel):

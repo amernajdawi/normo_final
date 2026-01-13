@@ -55,7 +55,7 @@ interface ConversationContextType {
   state: ConversationState;
   createNewConversation: () => Promise<void>;
   switchToConversation: (conversationId: string) => Promise<void>;
-  sendMessage: (message: string) => Promise<void>;
+  sendMessage: (message: string, userState?: string) => Promise<void>;
   loadConversations: () => Promise<void>;
   clearCurrentConversation: () => void;
 }
@@ -143,14 +143,13 @@ export const ConversationProvider: React.FC<ConversationProviderProps> = ({ chil
     }
   };
 
-  const sendMessage = async (message: string) => {
+  const sendMessage = async (message: string, userState?: string) => {
     if (!message.trim()) return;
 
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
       dispatch({ type: 'SET_ERROR', payload: null });
 
-      // Add user message immediately
       const userMessage: ChatMessage = {
         id: `user-${Date.now()}`,
         content: message.trim(),
@@ -159,10 +158,10 @@ export const ConversationProvider: React.FC<ConversationProviderProps> = ({ chil
       };
       dispatch({ type: 'ADD_MESSAGE', payload: userMessage });
 
-      // Send to API
       const response = await chatApi.sendMessage(
         message.trim(),
-        state.currentConversationId || undefined
+        state.currentConversationId || undefined,
+        userState
       );
 
       // Add assistant response
@@ -172,6 +171,7 @@ export const ConversationProvider: React.FC<ConversationProviderProps> = ({ chil
         role: 'assistant',
         timestamp: new Date(response.message.timestamp),
         citations: response.source_citations,
+        metadata: response.message.meta_data || {},
       };
       dispatch({ type: 'ADD_MESSAGE', payload: assistantMessage });
 

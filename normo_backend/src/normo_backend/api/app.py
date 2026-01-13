@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import json
 import uuid
 from datetime import datetime
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from PIL import Image as PILImage
 
 from normo_backend.agents.builder import graph
 from normo_backend.agents.llm_gate import llm_gate
@@ -34,6 +36,41 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
+
+
+def is_image_large_enough(filename: str, min_width: int = 100, min_height: int = 100) -> bool:
+    """
+    Check if image is larger than specified dimensions (default: 100x100 pixels).
+    Returns False for small images (icons, logos) and True for meaningful images.
+    
+    Args:
+        filename: Image filename (just the name, not full path)
+        min_width: Minimum width in pixels
+        min_height: Minimum height in pixels
+        
+    Returns:
+        True if image is larger than min dimensions, False otherwise
+    """
+    try:
+        # Construct full path to image in rag_assets
+        image_path = os.path.join("rag_assets", filename)
+        
+        if not os.path.exists(image_path):
+            print(f"⚠️  Image not found: {image_path}")
+            return False
+            
+        with PILImage.open(image_path) as img:
+            width, height = img.size
+            is_large = width > min_width and height > min_height
+            
+            if not is_large:
+                print(f"🚫 Filtered out small image: {filename} ({width}x{height}px)")
+            
+            return is_large
+            
+    except Exception as e:
+        print(f"⚠️  Error checking image size for {filename}: {e}")
+        return False
 
 
 @app.get("/health")
@@ -68,6 +105,37 @@ def get_pdf(pdf_path: str):
     )
 
 
+@app.get("/images/{image_filename}")
+def get_image(image_filename: str):
+    """Serve extracted images and tables from rag_assets."""
+    image_file_path = Path("rag_assets") / image_filename
+    
+    if not image_file_path.exists():
+        raise HTTPException(status_code=404, detail="Image file not found")
+    
+    # Verify it's a valid image format
+    valid_extensions = {'.png', '.jpg', '.jpeg', '.gif', '.webp'}
+    if image_file_path.suffix.lower() not in valid_extensions:
+        raise HTTPException(status_code=400, detail="File is not a valid image format")
+    
+    # Determine media type
+    media_types = {
+        '.png': 'image/png',
+        '.jpg': 'image/jpeg',
+        '.jpeg': 'image/jpeg',
+        '.gif': 'image/gif',
+        '.webp': 'image/webp'
+    }
+    media_type = media_types.get(image_file_path.suffix.lower(), 'image/png')
+    
+    return FileResponse(
+        path=str(image_file_path),
+        media_type=media_type,
+        filename=image_file_path.name,
+        headers={"Content-Disposition": "inline"}
+    )
+
+
 @app.post("/chat")
 def chat(request: ChatRequest) -> ChatResponse:
     """Handle chat requests with conversation context support and LLM gate."""
@@ -78,11 +146,10 @@ def chat(request: ChatRequest) -> ChatResponse:
     
     latest_message = request.messages[-1]
     user_query = latest_message.content
+    user_state = request.user_state
     
-    # Determine if this is a follow-up question
     is_follow_up = request.conversation_id is not None
     
-    # Get conversation history if this is a follow-up
     conversation_history = []
     if is_follow_up:
         conversation_history = conversation_storage.get_conversation_history(
@@ -113,11 +180,65 @@ def chat(request: ChatRequest) -> ChatResponse:
             user_query=user_query,
             conversation_id=conversation_id,
             conversation_history=conversation_history,
-            is_follow_up=is_follow_up
+            is_follow_up=is_follow_up,
+            user_state=user_state
         )
         
         # Run the agent workflow
         result_state = graph.invoke(agent_state)
+        
+        # Extract images from citations (filter out small images < 100x100px)
+        images_info = []
+        source_citations = result_state.get("source_citations", [])
+        for citation in source_citations:
+            if citation.get("images"):
+                for img in citation["images"]:
+                    filename = img.get("filename", "")
+                    
+                    # Filter: Only include images larger than 100x100 pixels
+                    if not filename or not is_image_large_enough(filename):
+                        continue
+                    
+                    img_entry = {
+                        "filename": filename,
+                        "description": img.get("description", ""),
+                        "type": img.get("type", "image"),
+                        "pdf_name": citation.get("pdf_name", ""),
+                        "page": citation.get("page", "")
+                    }
+                    # Avoid duplicates
+                    if img_entry not in images_info:
+                        images_info.append(img_entry)
+        
+        # Merge with retrieved_images from meta_data (filter out small images < 100x100px)
+        meta_data = result_state.get("meta_data", {})
+        if meta_data.get("retrieved_images"):
+            # Parse JSON string back to list
+            try:
+                images_str = meta_data.get("retrieved_images", "[]")
+                retrieved_images = json.loads(images_str) if isinstance(images_str, str) else []
+            except (json.JSONDecodeError, TypeError):
+                retrieved_images = []
+            
+            for img in retrieved_images:
+                filename = img.get("filename", "")
+                
+                # Filter: Only include images larger than 100x100 pixels
+                if not filename or not is_image_large_enough(filename):
+                    continue
+                
+                img_entry = {
+                    "filename": filename,
+                    "description": img.get("description", ""),
+                    "type": img.get("type", "image")
+                }
+                if img_entry not in images_info:
+                    images_info.append(img_entry)
+        
+        # Add images to meta_data
+        if images_info:
+            meta_data["images"] = images_info
+            print(f"📸 Including {len(images_info)} images in response")
         
         # Create conversation message for storage
         conversation_message = ConversationMessage(
@@ -125,8 +246,8 @@ def chat(request: ChatRequest) -> ChatResponse:
             content=result_state.get("summary", ""),
             agent_steps=result_state.get("steps", []),
             pdf_names=result_state.get("pdf_names", []),
-            source_citations=result_state.get("source_citations", []),
-            meta_data=result_state.get("meta_data", {})
+            source_citations=source_citations,
+            meta_data=meta_data
         )
         
         # Store the assistant's response
@@ -136,13 +257,14 @@ def chat(request: ChatRequest) -> ChatResponse:
         response_message = {
             "role": "assistant",
             "content": result_state.get("summary", ""),
-            "timestamp": datetime.now()
+            "timestamp": datetime.now(),
+            "meta_data": meta_data  # Include meta_data in response
         }
         
         return ChatResponse(
             message=response_message,
             conversation_id=conversation_id,
-            source_citations=result_state.get("source_citations", [])
+            source_citations=source_citations
         )
     
     else:
@@ -206,3 +328,8 @@ def create_conversation(user_id: str = None):
 def chat_legacy(state: AgentState) -> AgentState:
     """Legacy chat endpoint for backward compatibility."""
     return graph.invoke(state)
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
