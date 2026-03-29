@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   mongodb:
     image: mongo:7.0
@@ -31,19 +29,26 @@ services:
       - PYTHONUNBUFFERED=1
       - MONGODB_URL=mongodb://normo_user:normo_password@mongodb:27017/normo_db?authSource=admin
     volumes:
-      - ./normo_backend/vector_store:/app/vector_store
+      - ./normo_backend/chroma_db_openai_v2:/app/chroma_db_openai_v2
       - ./normo_backend/arch_pdfs:/app/arch_pdfs
+      - ./normo_backend/rag_assets:/app/rag_assets
       - ./normo_backend/conversations:/app/conversations
     depends_on:
       - mongodb
     networks:
       - normo-network
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
 
   frontend:
     build:
       context: ./normo_frontend
       dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: /api
     container_name: normo-frontend
     ports:
       - "3000:80"
@@ -58,6 +63,4 @@ networks:
     driver: bridge
 
 volumes:
-  vector_store:
-  arch_pdfs:
   mongodb_data:

@@ -1,134 +1,125 @@
 # Normo - Austrian Architectural Legal Document Analysis System
 
-An intelligent AI-powered system for analyzing Austrian building codes, regulations, and legal documents with advanced conversation management and MongoDB integration.
+An intelligent AI-powered system for analyzing Austrian building codes, regulations, and legal documents. Uses RAG (Retrieval Augmented Generation) with pre-embedded vector data so you can start querying immediately after setup.
 
-## 🏗️ Features
+## Features
 
+- **Pre-embedded Document Database**: 77 Austrian legal PDFs already processed into 2550+ vector chunks -- no embedding step needed
 - **Intelligent Query Routing**: LLM gate automatically determines whether to use simple responses or full document analysis
-- **Comprehensive Document Database**: Austrian building codes, OIB guidelines, ÖNORM standards, and federal/state laws
-- **Advanced RAG System**: Vector-based document retrieval with precise citations
+- **Advanced RAG System**: Vector-based document retrieval with precise citations and image/table references
 - **Conversation Management**: MongoDB + JSON hybrid storage with conversation history
 - **Modern UI**: React-based frontend with Material-UI components
-- **Docker Support**: Complete containerization for easy deployment
+- **Docker Support**: Complete containerization -- clone, build, run
 
-## 🚀 Quick Start (Docker - 5 minutes)
+## Quick Start (Docker)
 
 ### Prerequisites
-- Docker Desktop installed
+- Docker Desktop installed (allocate at least 8GB RAM in Docker Desktop settings)
 - OpenAI API key
 
 ### Setup & Run
+
 ```bash
 # 1. Clone repository
-git clone <repository-url>
-cd Normo
+git clone https://github.com/amernajdawi/normo_final.git
+cd normo_final
 
-# 2. Add your OpenAI API key
-echo "OPENAI_API_KEY=your_key_here" > normo_backend/.env
+# 2. Create your .env file with your OpenAI API key
+cp normo_backend/.env.example normo_backend/.env
+# Edit normo_backend/.env and add your real OPENAI_API_KEY
 
-# 3. Start everything
+# 3. Build and start everything
+docker-compose build
 docker-compose up -d
 
 # 4. Open http://localhost:3000
 ```
 
-### Test the System
-- **Simple query**: "Hello" → Fast response
-- **Architectural query**: "What are building requirements in Austria?" → Full analysis with citations
+The system comes with pre-embedded vector data (2550+ chunks from 77 PDFs). No additional embedding is needed -- it works immediately after `docker-compose up`.
 
 ### Stop
+
 ```bash
 docker-compose down
 ```
 
----
+## Test the System
 
-## 🛠️ Alternative: Local Development
+### Simple queries (fast LLM response)
+- "Hello"
+- "What can you help me with?"
 
-### Option 2: Local Development
+### Architectural queries (full RAG analysis with citations)
+- "What are the fire safety requirements for commercial buildings in Austria?"
+- "What are the building height requirements in Vienna?"
+- "What are the accessibility requirements according to OIB Richtlinie 4?"
+- "What does ÖNORM B 1600 say about barrier-free design?"
 
-1. **Prerequisites**:
-   - Python 3.12+
-   - Node.js 18+
-   - MongoDB (optional, will fallback to JSON storage)
+### Verify via API
 
-2. **Backend Setup**:
-   ```bash
-   cd normo_backend
-   # Install uv if not already installed
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   
-   # Install dependencies
-   uv sync
-   
-   # Set environment variables
-   export OPENAI_API_KEY=your_openai_api_key_here
-   export MONGODB_URL="mongodb://localhost:27017/normo_db"  # Optional
-   
-   # Start backend
-   uv run python -m src.normo_backend.api.app
-   ```
+```bash
+# Health check
+curl http://localhost:8000/health
 
-3. **Frontend Setup** (new terminal):
-   ```bash
-   cd normo_frontend
-   npm install
-   export REACT_APP_API_URL=http://localhost:8000
-   npm start
-   ```
+# Check vector store status
+docker exec normo-backend uv run normo-cli vectorstore status
+```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-Normo/
-├── normo_backend/           # Python FastAPI backend
+normo_final/
+├── normo_backend/
 │   ├── src/normo_backend/
-│   │   ├── agents/         # AI agents (planner, retriever, summarizer, gate)
-│   │   ├── api/            # FastAPI endpoints
-│   │   ├── models/         # Pydantic data models
-│   │   ├── services/       # Business logic (storage, vector store)
-│   │   ├── utils/          # Utilities (PDF processing, LLM)
-│   │   └── prompts/        # LLM prompts
-│   ├── arch_pdfs/          # Austrian legal documents
-│   ├── conversations/      # JSON conversation storage
-│   ├── vector_store/       # ChromaDB vector embeddings
-│   └── mongodb-init/       # MongoDB initialization scripts
-├── normo_frontend/         # React TypeScript frontend
+│   │   ├── agents/              # AI agents (planner, retriever, summarizer, gate)
+│   │   ├── api/                 # FastAPI endpoints
+│   │   ├── models/              # Pydantic data models
+│   │   ├── services/            # Business logic (storage, vector store)
+│   │   ├── utils/               # Utilities (PDF processing, LLM)
+│   │   └── prompts/             # LLM prompts
+│   ├── arch_pdfs/               # 77 Austrian legal document PDFs
+│   ├── chroma_db_openai_v2/     # Pre-built ChromaDB vector embeddings
+│   ├── rag_assets/              # Extracted images and tables from PDFs
+│   ├── entrypoint.sh            # Docker entrypoint script
+│   └── mongodb-init/            # MongoDB initialization scripts
+├── normo_frontend/
 │   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── contexts/       # React context providers
-│   │   ├── services/       # API services
-│   │   └── types/          # TypeScript type definitions
-│   └── public/             # Static assets
-├── docker-compose.yml      # Docker orchestration
-└── start-normo.sh         # Quick start script
+│   │   ├── components/          # React components
+│   │   ├── contexts/            # React context providers
+│   │   ├── services/            # API services
+│   │   └── types/               # TypeScript type definitions
+│   ├── nginx.conf               # Nginx config with API proxy
+│   └── public/                  # Static assets
+├── docker-compose.yml           # Docker orchestration
+└── README.md
 ```
 
-## 🧠 System Architecture
+## System Architecture
 
 ### LLM Gate
 - **Smart Routing**: Automatically determines query complexity
-- **Simple Queries**: General greetings, help requests → Fast LLM response
-- **Complex Queries**: Architectural questions → Full agent workflow
+- **Simple Queries**: General greetings, help requests -> Fast LLM response
+- **Complex Queries**: Architectural questions -> Full agent workflow with RAG
 
 ### Agent Workflow
 1. **Planner**: Determines required actions
 2. **PDF Selector**: Identifies relevant documents
-3. **Retriever**: Extracts specific information
-4. **Summarizer**: Generates comprehensive responses
+3. **Retriever**: Extracts specific information from vector store
+4. **Summarizer**: Generates comprehensive responses with citations
 
 ### Data Storage
+- **ChromaDB**: 2550+ pre-embedded vector chunks for document search
 - **MongoDB**: Primary database for conversations
 - **JSON Files**: Backup storage for redundancy
-- **ChromaDB**: Vector embeddings for document search
 
-## 📚 Document Database
+## Document Database
 
-The system includes comprehensive Austrian legal documents:
+77 Austrian legal documents are included and pre-embedded:
 
 - **Federal Laws**: BauKG, GewO 1994, AStV, BauV
-- **State Laws**: Vienna and Upper Austria building codes
-- **OIB Guidelines**: 2019 and 2023 editions covering:
+- **Vienna Laws**: Bauordnung, Wiener Garagengesetz, WBTV 2023
+- **Upper Austria Laws**: Building codes, Planzeichenverordnung
+- **OIB Guidelines (2019 + 2023)**:
   - Mechanical strength and stability
   - Fire protection (commercial, garages, high-rise)
   - Hygiene and environmental protection
@@ -137,121 +128,38 @@ The system includes comprehensive Austrian legal documents:
   - Energy efficiency
 - **ÖNORM Standards**: B 1600, B 1800, B 5371
 
-## 🔧 Configuration
+## Re-embedding (Optional)
+
+The vector store comes pre-built. If you need to re-embed (e.g., after adding new PDFs):
+
+```bash
+# Reset and re-embed all PDFs
+docker exec normo-backend uv run normo-cli vectorstore embed --all --force
+
+# Embed only specific PDFs
+docker exec normo-backend uv run normo-cli vectorstore embed "01_Data base documents/path/to/file.pdf"
+
+# Check status
+docker exec normo-backend uv run normo-cli vectorstore status
+```
+
+## Configuration
 
 ### Environment Variables
 
-**Backend**:
-- `OPENAI_API_KEY`: Required for LLM functionality
-- `MONGODB_URL`: Optional, defaults to JSON storage if not provided
+**Backend** (`normo_backend/.env`):
+- `OPENAI_API_KEY`: Required -- your OpenAI API key
+- `ENVIRONMENT`: `development` or `production`
+- `LOG_LEVEL`: `INFO`, `DEBUG`, `WARNING`, `ERROR`
 
-**Frontend**:
-- `REACT_APP_API_URL`: Backend API URL (default: http://localhost:8000)
+### Docker Resources
 
-### MongoDB Setup (Optional)
+The backend container is configured with an 8GB memory limit. If you encounter OOM errors during re-embedding of large PDFs, increase Docker Desktop's memory allocation to 12-16GB.
 
-If using MongoDB, the system will:
-- Auto-initialize the database
-- Create necessary indexes
-- Sync existing conversations
+## Services & Ports
 
-## 🧪 Testing
-
-### Test LLM Gate
-```bash
-cd normo_backend
-uv run python test_llm_gate.py
-```
-
-### Test MongoDB Integration
-```bash
-cd normo_backend
-uv run python test_mongodb_integration.py
-```
-
-### Test API Endpoints
-```bash
-# Health check
-curl http://localhost:8000/health
-
-# Test chat
-curl -X POST http://localhost:8000/chat \
-  -H "Content-Type: application/json" \
-  -d '{"messages": [{"role": "user", "content": "What are building requirements in Austria?"}]}'
-```
-
-## 📖 Usage Examples
-
-### General Queries (Simple LLM)
-- "Hello, how are you?"
-- "What can you help me with?"
-- "Thank you for your help"
-
-### Architectural Queries (Full Agent)
-- "What are the building height requirements in Austria?"
-- "I need playground area requirements for a 5-flat building"
-- "What are the fire safety regulations for commercial buildings?"
-- "How do I calculate minimum room heights?"
-
-## 🚀 Deployment
-
-### Production Docker
-```bash
-# Build and start
-docker-compose -f docker-compose.prod.yml up -d
-
-# Scale services
-docker-compose up -d --scale backend=3
-```
-
-### Environment-Specific Configuration
-- Development: Uses local MongoDB
-- Production: Configure external MongoDB
-- Testing: Uses JSON storage only
-
-## 🔍 Monitoring
-
-### Health Checks
-- Backend: `GET /health`
-- MongoDB: Check container logs
-- Vector Store: Check embedding status
-
-### Logs
-```bash
-# View all logs
-docker-compose logs -f
-
-# View specific service
-docker-compose logs -f backend
-```
-
-## 🛠️ Development
-
-### Adding New Documents
-1. Place PDFs in `normo_backend/arch_pdfs/`
-2. Restart the system to re-embed documents
-3. Test with relevant queries
-
-### Customizing Prompts
-Edit files in `normo_backend/src/normo_backend/prompts/`:
-- `planner.py`: Planning logic
-- `pdf_selector.py`: Document selection
-- `summarizer.py`: Response generation
-- `llm_gate.py`: Query routing
-
-### Adding New Agents
-1. Create agent in `normo_backend/src/normo_backend/agents/`
-2. Add to workflow in `builder.py`
-3. Update prompts as needed
-
-## 📊 Performance
-
-### Response Times
-- **Simple Queries**: 1-2 seconds
-- **Complex Queries**: 30-60 seconds
-- **Document Processing**: 2-5 minutes (first run)
-
-### Resource Usage
-- **Memory**: ~2GB (with vector store)
-- **Storage**: ~500MB (documents + embeddings)
-- **CPU**: Moderate during processing
+| Service  | Port | URL                    |
+|----------|------|------------------------|
+| Frontend | 3000 | http://localhost:3000   |
+| Backend  | 8000 | http://localhost:8000   |
+| MongoDB  | 27017| mongodb://localhost:27017 |

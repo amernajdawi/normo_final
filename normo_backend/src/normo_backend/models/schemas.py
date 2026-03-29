@@ -14,6 +14,7 @@ class ChatMessage(BaseModel):
     tool_name: Optional[str] = None
     tool_args: Optional[dict] = None
     timestamp: Optional[datetime] = Field(default_factory=datetime.now)
+    meta_data: Optional[dict] = None
 
 
 class ConversationMessage(BaseModel):

@@ -150,43 +150,61 @@ class PersistentVectorStore:
             print(f"Warning: Could not remove embeddings for {pdf_name}: {e}")
     
     def add_pdf_embeddings(self, pdf_names: List[str]) -> int:
-        """Add embeddings for new/changed PDFs."""
+        """Add embeddings for new/changed PDFs, persisting each PDF individually."""
         if not pdf_names:
             return 0
         
-        print(f"📊 Processing {len(pdf_names)} PDFs for embedding...")
+        print(f"📊 Processing {len(pdf_names)} PDFs for embedding (one at a time)...")
         
-        # Load documents from PDFs using selected processor
-        if self.use_docling:
-            print(f"🔬 Using Docling processor with image extraction...")
-            documents = load_pdfs_with_docling(
-                self.pdf_folder, 
-                pdf_names, 
-                self.image_output_dir
-            )
-        else:
-            print(f"📄 Using legacy PyPDF processor...")
-            documents = load_pdfs_from_folder(self.pdf_folder, pdf_names)
+        total_chunks = 0
+        successful = 0
+        failed = []
         
-        if not documents:
-            print("❌ No documents loaded")
-            return 0
+        for i, pdf_name in enumerate(pdf_names, 1):
+            print(f"\n{'='*60}")
+            print(f"📄 [{i}/{len(pdf_names)}] {pdf_name}")
+            print(f"{'='*60}")
+            
+            try:
+                if self.use_docling:
+                    documents = load_pdfs_with_docling(
+                        self.pdf_folder,
+                        [pdf_name],
+                        self.image_output_dir
+                    )
+                else:
+                    documents = load_pdfs_from_folder(self.pdf_folder, [pdf_name])
+                
+                if not documents:
+                    print(f"⚠️  No chunks extracted from {pdf_name}, skipping")
+                    continue
+                
+                print(f"💾 Adding {len(documents)} chunks to vector store...")
+                self.vectorstore.add_documents(documents)
+                
+                pdf_path = Path(self.pdf_folder) / pdf_name
+                if pdf_path.exists():
+                    self.pdf_metadata[pdf_name] = self._get_pdf_stats(str(pdf_path))
+                self._save_metadata()
+                
+                total_chunks += len(documents)
+                successful += 1
+                print(f"✅ Committed {len(documents)} chunks for {Path(pdf_name).name}")
+                print(f"   Running total: {total_chunks} chunks from {successful} PDFs")
+                
+            except Exception as e:
+                print(f"❌ Failed to embed {pdf_name}: {e}")
+                failed.append(pdf_name)
+                continue
         
-        # Add documents to vector store
-        print(f"💾 Adding {len(documents)} chunks to vector store...")
-        self.vectorstore.add_documents(documents)
-        
-        # Update metadata for processed PDFs
-        for pdf_name in pdf_names:
-            pdf_path = Path(self.pdf_folder) / pdf_name
-            if pdf_path.exists():
-                self.pdf_metadata[pdf_name] = self._get_pdf_stats(str(pdf_path))
-        
-        # Save metadata
-        self._save_metadata()
-        
-        print(f"✅ Successfully embedded {len(pdf_names)} PDFs with {len(documents)} chunks")
-        return len(documents)
+        print(f"\n{'='*60}")
+        print(f"🏁 Embedding complete: {total_chunks} chunks from {successful}/{len(pdf_names)} PDFs")
+        if failed:
+            print(f"⚠️  Failed PDFs ({len(failed)}):")
+            for f in failed:
+                print(f"   - {f}")
+        print(f"{'='*60}")
+        return total_chunks
     
     def get_retriever(self, search_kwargs: Optional[Dict] = None):
         """Get retriever for the vector store."""

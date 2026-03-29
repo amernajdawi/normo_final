@@ -1,32 +1,387 @@
 {
   "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 3 Hygiene, Gesundheit und Umweltschutz Ausgabe Mai 2023_OIB-330.3-011_23.pdf": {
     "size": 1012020,
-    "modified": 1762859444.618037,
+    "modified": 1774796505.7858481,
     "hash": "d59b0cbf09104984fcf3b748a7497c97"
   },
   "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-026_23.pdf": {
     "size": 1125128,
-    "modified": 1762859444.636202,
+    "modified": 1774796505.836395,
     "hash": "5831c928553cd47d24a93093e226e972"
   },
   "01_Data base documents/04_ÖNORM/4_AT_0_0_OEN_B 1600 Barrierefreies Bauen.pdf": {
     "size": 12478395,
-    "modified": 1762859444.7919762,
+    "modified": 1774796506.3806686,
     "hash": "4e75d7301b7b1d52adc4e2f39f975e3e"
   },
-  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/2_AT_W_W_VE_Gesamte Rechtsvorschrift für Wiener Bautechnikverordnung 2023 - WBTV 2023_LGBl. Nr. 14_2024.pdf": {
-    "size": 74308475,
-    "modified": 1762859444.2385955,
-    "hash": "bd0e12c6d7b8547a77054fbcfddd3bf2"
+  "01_Data base documents/00_Bundesgesetze/1_AT_0_0_GE_Gesamte Rechtsvorschrift für Bauarbeitenkoordinationsgesetz- BauKG_BGBl. I Nr. 37_1999.pdf": {
+    "size": 164400,
+    "modified": 1774796504.4000573,
+    "hash": "81a410dfa2e4a1e53054ecaa393a6d60"
+  },
+  "01_Data base documents/00_Bundesgesetze/1_AT_0_0_GE_Gewerbeordnung 1994- GewO 1994_BGBl. Nr. 194_1994.pdf": {
+    "size": 2263385,
+    "modified": 1774796504.4087083,
+    "hash": "b8b21b73666aa456f7814818bddd9a51"
+  },
+  "01_Data base documents/00_Bundesgesetze/2_AT_0_0_VE_Gesamte Rechtsvorschrift für Arbeitsstättenverordnung- AStV_BGBl. II Nr. 368_1998.pdf": {
+    "size": 316959,
+    "modified": 1774796504.4099123,
+    "hash": "8994dca310b37af8b37e3ffd246dc6b2"
+  },
+  "01_Data base documents/00_Bundesgesetze/2_AT_0_0_VE_Gesamte Rechtsvorschrift für Bauarbeiterschutzverordnung- BauV_BGBl. Nr. 340_1994.pdf": {
+    "size": 583702,
+    "modified": 1774796504.4183729,
+    "hash": "698813455d1fb38833170754e3bb758c"
+  },
+  "01_Data base documents/00_Bundesgesetze/2_AT_0_0_VE_Gesamte Rechtsvorschrift für Vereinfachtes Genehmigungsverfahren für Betriebsanlagen_BGBl. Nr. 850_1994.pdf": {
+    "size": 130529,
+    "modified": 1774796504.4193933,
+    "hash": "e77151a9e4e8dce8a26485e7723ce64c"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Bauordnung für Wien- BO für Wien_LGBl. Nr. 11_1930.pdf": {
+    "size": 887665,
+    "modified": 1774796504.4261959,
+    "hash": "8f8e8aa90342b71e31b40f3bf92119da"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Forstgesetz 1975- ForstG_BGBl. Nr. 440_1975 .pdf": {
+    "size": 694543,
+    "modified": 1774796504.431574,
+    "hash": "c47e392134c887f02db69d570e1aefeb"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Gesamte Rechtsvorschrift für Durchführung des Wiener Garagengesetzes 2008_LGBl. Nr. 50_2023.pdf": {
+    "size": 116676,
+    "modified": 1774796504.4320064,
+    "hash": "748e85f62c7e07fce1dd16c55905acf3"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Gesamte Rechtsvorschrift für Wiener Ölfeuerungsgesetz 2006 - WÖlfG 2006_.pdf": {
+    "size": 215728,
+    "modified": 1774796504.4333894,
+    "hash": "895fb4a48bdf22608c30d179627f1dbc"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Kanalanlagen und Einmündungsgebührengesetz - KEG_LGBl. Nr. 22_1955.pdf": {
+    "size": 162940,
+    "modified": 1774796504.434701,
+    "hash": "dd0c1a545a462859d8af879b1a4cec8b"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Schutz gegen Baulärm_.pdf": {
+    "size": 31042,
+    "modified": 1774796504.4350052,
+    "hash": "a0b9fad6056bddc8dfa7485af33212d0"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Wiener Aufzugsgesetz 2006- WAZG 2006_LGBl. Nr. 68_2006.pdf": {
+    "size": 416331,
+    "modified": 1774796504.437151,
+    "hash": "7abab0e1418f75fafd41c5c723e991e9"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Wiener Baumschutzgesetz_LGBl. Nr. 27_1974.pdf": {
+    "size": 169484,
+    "modified": 1774796504.4391627,
+    "hash": "c444416de2daf2825478718e5b089feb"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Wiener Garagengesetz 2008- WGarG 2008_LGBl.pdf": {
+    "size": 4553732,
+    "modified": 1774796504.4677904,
+    "hash": "d32edf9dbdcd8f5543efbdd1dabebc27"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Wiener Kleingartengesetz 1996 - WKIG 1996_LGBl. Nr. 57_1996.pdf": {
+    "size": 195856,
+    "modified": 1774796504.470257,
+    "hash": "2ba1e74d69c44ee2d89d6fecb504bb19"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/1_AT_W_W_GE_Wiener Naturschutzgesetz_.pdf": {
+    "size": 501689,
+    "modified": 1774796504.4748113,
+    "hash": "3cbb0f9e474b53e2b983903b8019a7a7"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/2_AT_W_W_VE_Einheitssatz des Anliegerbeitrages bei erstmaligem Anbau an eine Straße (Verkehrsfläche)_LGBl. Nr. 33_1949.pdf": {
+    "size": 10764,
+    "modified": 1774796504.4758472,
+    "hash": "c541ea9d6acd1f948b019d9d4ce7cb22"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/2_AT_W_W_VE_Gesamte Rechtsvorschrift für Baupläne - Bauplanverordnung_LGBl. Nr. 11_1930.pdf": {
+    "size": 22457,
+    "modified": 1774796504.476274,
+    "hash": "1b7e08743473e29cec0afdc43792d58d"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/2_AT_W_W_VE_Gesamte Rechtsvorschrift für Gehsteigverordnung_LGBl. Nr. 14_1981.pdf": {
+    "size": 36291,
+    "modified": 1774796504.4768317,
+    "hash": "5dc67148b6b3999b90785485fbb13e6f"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/2_AT_W_W_VE_Gesamte Rechtsvorschrift für Spielplatzverordnung_.pdf": {
+    "size": 33300,
+    "modified": 1774796504.4773567,
+    "hash": "6a78bea87fe72beff88caf0ebe9d5c2c"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_GE_Abwasserentsorgungsgesetz 2001_LGBl.Nr. 27_2001.pdf": {
+    "size": 145992,
+    "modified": 1774796504.7544074,
+    "hash": "3a481ad7d1ecbc955b3900bc00615635"
   },
   "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/2_AT_OOE_0_VE_Bautechnikverordnung 2013 – BauTV 2013_LGBl.Nr. 36_2013.pdf": {
     "size": 254666,
-    "modified": 1762859444.2786167,
+    "modified": 1774796504.852398,
     "hash": "10bdb0ca6d2e67c77529922301a4e464"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_GE_Oö. Wohnbauförderungsgesetz 1993_LGBl.Nr. 6_1993.pdf": {
+    "size": 268703,
+    "modified": 1774796504.7933717,
+    "hash": "b5147deb8938ef391b83caa1a5359f94"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_GE_Grundverkehrsgesetz 1994_LGBl.Nr. 88_1994.pdf": {
+    "size": 276711,
+    "modified": 1774796504.7689905,
+    "hash": "0f183fe44c529dc7e2b96bc7be515bde"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_GE_Abfallwirtschaftsgesetz 2009_LGBl.Nr. 71_2009.pdf": {
+    "size": 295890,
+    "modified": 1774796504.7529655,
+    "hash": "b066370358298e8db31563f7ae4c1ad3"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_GE_Oö. Straßengesetz 1991_LGBl.Nr. 84_1991.pdf": {
+    "size": 334631,
+    "modified": 1774796504.7919774,
+    "hash": "e151c6c19467fe1c3b77ffacbef4f7ab"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_GE_Oberösterreichisches Raumordnungsgesetz 1994_LGBl.Nr. 114_1993.pdf": {
+    "size": 398024,
+    "modified": 1774796504.7878547,
+    "hash": "ae775193fa0de8a829ca251d2e988756"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_GE_Oberösterreichische Bauordnung 1994_LGBl.Nr. 66_1994.pdf": {
+    "size": 451736,
+    "modified": 1774796504.7835624,
+    "hash": "811767c2362249c93c6fca8f47468040"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_GE_Bodenschutzgesetz 1991_LGBl.Nr. 63_1997.pdf": {
+    "size": 548658,
+    "modified": 1774796504.7674463,
+    "hash": "e072ebe8da4ed23e0b9262389f2e4277"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_GE_Bautechnikgesetz 2013 –  BauTG 2013_LGBl.Nr. 35_2013.pdf": {
+    "size": 729197,
+    "modified": 1774796504.7642007,
+    "hash": "09771aa73e608ed541b9cbbe013841bf"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_GE_Luftreinhalte- und Energietechnikgesetz 2002_LGBl.Nr. 114_2002.pdf": {
+    "size": 823884,
+    "modified": 1774796504.775635,
+    "hash": "9286c860a94291e537dd55d5942dd669"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 1 Ausgabe Mai 2023 Mechanische Festigkeit und Standsicherheit_OIB-330.1-004_23.pdf": {
+    "size": 834440,
+    "modified": 1774796505.5013356,
+    "hash": "8ecf246c44239a168bf8311a45b5ec32"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 1 Mechanische Festigkeit und Standsicherheit Ausgabe Mai 2023_OIB-330.1-006_23.pdf": {
+    "size": 848214,
+    "modified": 1774796505.3262265,
+    "hash": "4a197a6e63244259da7e503e0d565e8c"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_Begriffsbestimmungen Ausgabe Mai 2023_OIB-330-003_23.pdf": {
+    "size": 901709,
+    "modified": 1774796505.323227,
+    "hash": "324e68e719e0154328783a2a4466e233"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 5 Schallschutz Ausgabe Mai 2023_OIB-330.5-005_23.pdf": {
+    "size": 1079519,
+    "modified": 1774796505.495389,
+    "hash": "d2d64c78cb36dfb1b63d8ced36d1e93a"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_OIB-Richtlinien Begriffsbestimmungen Ausgabe April 2019_OIB-330-001_19.pdf": {
+    "size": 1128505,
+    "modified": 1774796505.311331,
+    "hash": "a022c1df1eb631b4e7ad7237b43cf49f"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 2 Leitfaden Abweichungen im Brandschutz und Brandschutzkonzepte Ausgabe Mai 2023_OIB-330.2-033_23.pdf": {
+    "size": 1150911,
+    "modified": 1774796505.5693395,
+    "hash": "e2b1a69baa5f9f898f73ee6ba6ea7b44"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 2.1 Brandschutz bei Betriebsbauten Ausgabe Mai 2023_OIB-330.2-035_23.pdf": {
+    "size": 1169047,
+    "modified": 1774796505.3400433,
+    "hash": "6d433fca6b02144b4b60a5a8fea81c30"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 2.2 Brandschutz bei Garagen, überdachten Stellplätzen und Parkdecks Ausgabe Mai 2023_OIB-330.2-031_23.pdf": {
+    "size": 1176858,
+    "modified": 1774796505.746853,
+    "hash": "c75b29182646e45a8fa2c83d4e378905"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 2.3 Brandschutz bei Gebäuden mit einem Fluchtniveau von mehr als 22 m Ausgabe Mai 2023_OIB-330.2-037_23.pdf": {
+    "size": 1190639,
+    "modified": 1774796505.3546658,
+    "hash": "8a7d4b04ed33b12b5f60e43c063c25a1"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 1 Mechanische Festigkeit und Standsicherheit Ausgabe April 2019_OIB-330.1-003_19.pdf": {
+    "size": 1193913,
+    "modified": 1774796504.8719027,
+    "hash": "7ef69d24abd19c27a14f52536621039e"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_OIB-Richtlinie 1 Mechanische Festigkeit und Standsicherheit Ausgabe April 2019_OIB-330.1-002_19.pdf": {
+    "size": 1204133,
+    "modified": 1774796505.138921,
+    "hash": "0c451c1eb5c965eda0a034b5f12023e5"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 2.3 Brandschutz bei Gebäuden mit einem Fluchtniveau von mehr als 22 m Ausgabe Mai 2023_OIB-330.2-032_23.pdf": {
+    "size": 1206559,
+    "modified": 1774796505.7567444,
+    "hash": "b85e26bde9de297dbfbdbd12f2f71664"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe April 2019_OIB-330.4-020_19.pdf": {
+    "size": 1261576,
+    "modified": 1774796505.2714546,
+    "hash": "582ee7f8990e5bcf1a9b5f770df21928"
+  },
+  "01_Data base documents/04_ÖNORM/4_AT_0_0_OEN_B 5371 Treppen, Geländer ung Brüstungen in Gebäuden und von Außenanlagen - Abmessungen.pdf": {
+    "size": 1302565,
+    "modified": 1774796506.4543073,
+    "hash": "bf972a1ed6608fb6ceda618e35df28fa"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 2.1 Brandschutz bei Betriebsbauten Ausgabe Mai 2023_OIB-330.2-030_23.pdf": {
+    "size": 1302836,
+    "modified": 1774796505.6770582,
+    "hash": "4480dc57351745424aaa4a44de8a41da"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 5 Schallschutz Ausgabe Mai 2023_OIB-330.5-004_23.pdf": {
+    "size": 1344686,
+    "modified": 1774796505.870132,
+    "hash": "3a37e3e2d6898cd0fd26926c2f66a467"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 6 Leitfaden Energietechnisches Verhalten von Gebäuden Ausgabe Mai 2023_OIB-330.6-037_23.pdf": {
+    "size": 1395558,
+    "modified": 1774796505.9681005,
+    "hash": "dae0b4af81caddfadfe1819c9a311c54"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_OIB-Richtlinie 3 Hygiene, Gesundheit und Umweltschutz Ausgabe April 2019_OIB-330.3-007_19.pdf": {
+    "size": 1403110,
+    "modified": 1774796505.2339938,
+    "hash": "0d6175e3c208d8c6ec6f7359913361af"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 6 Energieeinsparung und Wärmeschutz Ausgabe Mai 2023_OIB-330.6-036_23.pdf": {
+    "size": 1433315,
+    "modified": 1774796505.9377382,
+    "hash": "2fdc48768997e655e9c75eb47b3d3c7c"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 5 Schallschutz Ausgabe April 2019_OIB-330.5-003_19.pdf": {
+    "size": 1485713,
+    "modified": 1774796505.1287565,
+    "hash": "1092872a1b93a719bd1025fbe09f45cd"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_OIB-Richtlinie 5 Schallschutz Ausgabe April 2019_OIB-330.5-002_19.pdf": {
+    "size": 1523899,
+    "modified": 1774796505.2812276,
+    "hash": "fcac4c4e0cadb4919f4cb22841b747ad"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_OIB-Richtlinie 2.2 Brandschutz bei Garagen, überdachten Stellplätzen und Parkdecks Ausgabe April 2019_OIB-330.2-014_19.pdf": {
+    "size": 1527661,
+    "modified": 1774796505.1539443,
+    "hash": "862d114a1ccc10c698553cc9de9b2426"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 2.3 Brandschutz bei Gebäuden mit einem Fluchtniveau von mehr als 22 m Ausgabe April 2019_OIB-330.2-019_19.pdf": {
+    "size": 1536850,
+    "modified": 1774796504.96965,
+    "hash": "8bf1c235753fac3ec4623967ba2eec45"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 2.1 Brandschutz bei Betriebsbauten Ausgabe April 2019_OIB-330.2-017_19.pdf": {
+    "size": 1543420,
+    "modified": 1774796504.9442234,
+    "hash": "f222d93d0ff9cf2341c9e727cce59cc2"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_OIB-Richtlinie 2.3 Brandschutz bei Gebäuden mit einem Fluchtniveau von mehr als 22 m Ausgabe April 2019_OIB-330.2-015_19.pdf": {
+    "size": 1550584,
+    "modified": 1774796505.1555197,
+    "hash": "ea55f86eb770cb20582a082847bfa86b"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_OIB-Richtlinie 2.1 Brandschutz bei Betriebsbauten Ausgabe April 2019_OIB-330.2-013_19.pdf": {
+    "size": 1566548,
+    "modified": 1774796505.1511953,
+    "hash": "dc86fbde3835e9d40d74d459c6ce7e43"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/2_AT_OOE_0_VE_Gesamte Rechtsvorschrift für Planzeichenverordnung für Bebauungspläne_LGBl.Nr. 3_1996.pdf": {
+    "size": 1700588,
+    "modified": 1774796504.8660893,
+    "hash": "3c6da8596c70255b5bc22d40962e4418"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_OIB-Richtlinie 6 Energieeinsparung und Wärmeschutz Ausgabe April 2019_OIB-330.6-026_19.pdf": {
+    "size": 1718457,
+    "modified": 1774796505.298322,
+    "hash": "ade087c25e99e9d436f0a3dc8c3c054a"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_OIB-Richtlinie 2 Brandschutz Ausgabe April 2019_OIB-330.2-012_19.pdf": {
+    "size": 1835260,
+    "modified": 1774796505.1446393,
+    "hash": "b0396afcb6d1813d813552bf301cc780"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 2 Brandschutz Ausgabe Mai 2023_OIB-330.2-029_23.pdf": {
+    "size": 1975942,
+    "modified": 1774796505.5455809,
+    "hash": "e422dbdbda94339f23b684df8382a9ed"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 3 Hygiene, Gesundheit und Umweltschutz Ausgabe April 2019_OIB-330.3-008_19.pdf": {
+    "size": 2405502,
+    "modified": 1774796504.983065,
+    "hash": "4d0546415164c208b05945a4e6d2175a"
   },
   "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 3 Hygiene, Gesundheit und Umweltschutz Ausgabe Mai 2023_OIB-330.3-012_23.pdf": {
     "size": 2655734,
-    "modified": 1762859444.5048819,
+    "modified": 1774796505.4105663,
     "hash": "3160ab1e3ec56a64cc7e760504db3d16"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB-Richtlinie 1 Leitfaden Festlegung der Tragfähigkeit und Gebrauchstauglichkeit von bestehenden Tragwerken Ausgabe Mai 2023_OIB-330.1-005_23.pdf": {
+    "size": 2779954,
+    "modified": 1774796505.5402188,
+    "hash": "09f4047ade45f658e0fffbdb74c2af42"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 2.2 Brandschutz bei Garagen, überdachten Stellplätzen und Parkdecks Ausgabe April 2019_ OIB-330.2-018_19.pdf": {
+    "size": 3240216,
+    "modified": 1774796504.9472914,
+    "hash": "402497cfa9dd43126a1862b6153a1211"
+  },
+  "01_Data base documents/04_ÖNORM/4_AT_0_0_OEN_B 1800 Ermittlung von Flächen und Rauminhalten.pdf": {
+    "size": 3420307,
+    "modified": 1774796506.4014082,
+    "hash": "4feaf2e0e510ee9aed0802291e80b231"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 2.2 Brandschutz bei Garagen, überdachten Stellplätzen und Parkdecks Ausgabe Mai 2023_OIB-330.2-036_23.pdf": {
+    "size": 3772629,
+    "modified": 1774796505.344563,
+    "hash": "c7bc5f1224d77ac23f4038e5227ece91"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe April 2019_OIB-330.4-021_19.pdf": {
+    "size": 4247171,
+    "modified": 1774796505.1155248,
+    "hash": "d40b48ec4931ea02f24e9e30a4b402f4"
+  },
+  "01_Data base documents/04_ÖNORM/4_AT_0_0_OEN_B 1800-1 Ermittlung von Flächen und Rauminhalten - Beiblatt 1.pdf": {
+    "size": 5349834,
+    "modified": 1774796506.439894,
+    "hash": "a132432f9a6d1708ba7d1b59f0d3f882"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/04. OBERÖSTERREICH/1_AT_OOE_0_VE_Gesamte Rechtsvorschrift für Planzeichenverordnung für Flächenwidmungspläne 2021_LGBl.Nr. 37_2021.pdf": {
+    "size": 5785637,
+    "modified": 1774796504.8432808,
+    "hash": "6592db05beeca4c1e363cef783c2b5b2"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 4 Nutzungssicherheit und Barrierefreiheit Ausgabe Mai 2023_OIB-330.4-027_23.pdf": {
+    "size": 5848583,
+    "modified": 1774796505.483402,
+    "hash": "c35f24b7a4c3d6e20b6cb0473eed86ce"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2019/3_AT_0_0_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 2 Brandschutz Ausgabe April 2019_OIB-330.2-016_19-004.pdf": {
+    "size": 7016339,
+    "modified": 1774796504.9254496,
+    "hash": "6bfe20329e2f5027a05a194634f89dcc"
+  },
+  "01_Data base documents/03_OIB Richtlinien/2023/3_AT_0_0_OIB_OIB_Erläuternde Bemerkungen zu OIB-Richtlinie 2 Brandschutz Ausgabe Mai 2023_OIB-330.2-034_23.pdf": {
+    "size": 16858459,
+    "modified": 1774796506.2558029,
+    "hash": "252ddd1728a484696e57492145ac5ee2"
+  },
+  "01_Data base documents/01-02_Bundesländer- Gesetze und Verordnungen/01.Wien/2_AT_W_W_VE_Gesamte Rechtsvorschrift für Wiener Bautechnikverordnung 2023 - WBTV 2023_LGBl. Nr. 14_2024.pdf": {
+    "size": 74308475,
+    "modified": 1774796504.746536,
+    "hash": "bd0e12c6d7b8547a77054fbcfddd3bf2"
   }
 }

@@ -4,8 +4,8 @@ venv/
 env/
 ENV/
 
-# Large PDF files
-#*.pdf
+# Node
+node_modules/
 
 # Python
 __pycache__/
@@ -43,9 +43,17 @@ Thumbs.db
 *.log
 logs/
 
-# Database
+# Database (general rule, then whitelist ChromaDB)
 *.db
 *.sqlite3
+!normo_backend/chroma_db_openai_v2/chroma.sqlite3
 
-# Environment variables
+# Environment variables (NEVER commit real keys)
 .env
+.env.local
+
+# User conversations (generated at runtime)
+normo_backend/conversations/
+
+# Memory bank (development only)
+memory-bank/

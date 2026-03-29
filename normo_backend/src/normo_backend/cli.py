@@ -3,6 +3,7 @@ Command-line interface for managing the Normo backend.
 """
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -26,6 +27,7 @@ def main():
     embed_parser = vs_subparsers.add_parser("embed", help="Embed PDFs")
     embed_parser.add_argument("--all", action="store_true", help="Embed all available PDFs")
     embed_parser.add_argument("--force", action="store_true", help="Force re-embedding")
+    embed_parser.add_argument("--max-size", type=int, default=0, help="Skip PDFs larger than N MB (0=no limit)")
     embed_parser.add_argument("pdfs", nargs="*", help="Specific PDFs to embed")
     
     # Reset command
@@ -80,6 +82,27 @@ def handle_vectorstore_command(args):
     elif args.vs_command == "embed":
         if args.all:
             available_pdfs = get_available_pdfs("arch_pdfs")
+            if args.max_size > 0:
+                max_bytes = args.max_size * 1024 * 1024
+                filtered = []
+                skipped = []
+                for pdf in available_pdfs:
+                    pdf_path = Path("arch_pdfs") / pdf
+                    try:
+                        size = pdf_path.stat().st_size
+                    except OSError:
+                        size = 0
+                    if size <= max_bytes:
+                        filtered.append(pdf)
+                    else:
+                        skipped.append((pdf, size / (1024 * 1024)))
+                if skipped:
+                    print(f"⏭️  Skipping {len(skipped)} PDFs larger than {args.max_size} MB:")
+                    for name, sz in skipped:
+                        print(f"   {sz:.1f} MB - {Path(name).name}")
+                available_pdfs = filtered
+            available_pdfs.sort(key=lambda p: (Path("arch_pdfs") / p).stat().st_size
+                                if (Path("arch_pdfs") / p).exists() else 0)
             if args.force:
                 vector_store.reset_vector_store()
             result = vector_store.ensure_pdfs_embedded(available_pdfs)
